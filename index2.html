@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Letter ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Poppins,sans-serif;
+background:linear-gradient(135deg,#ffdde1,#ee9ca7,#fbc2eb);
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.card{
+width:90%;
+max-width:500px;
+background:rgba(255,255,255,.2);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 15px 30px rgba(0,0,0,.2);
+position:relative;
+z-index:2;
+}
+
+.envelope{
+font-size:80px;
+cursor:pointer;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+50%{transform:translateY(-10px);}
+}
+
+h1{
+font-family:Great Vibes;
+font-size:50px;
+color:#ff2d75;
+margin:15px 0;
+}
+
+#letter{
+white-space:pre-wrap;
+font-size:17px;
+line-height:1.8;
+color:#fff;
+min-height:250px;
+}
+
+button{
+margin-top:20px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:#ff2d75;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.heart{
+position:absolute;
+color:white;
+font-size:20px;
+animation:rise 7s linear infinite;
+}
+
+@keyframes rise{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+.petal{
+position:absolute;
+font-size:18px;
+animation:fall 10s linear infinite;
+opacity:.8;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh) rotate(0deg);
+}
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="envelope" onclick="startLetter()">💌</div>
+
+<h1>For You ❤️</h1>
+
+<p id="letter"></p>
+
+<button onclick="location.href='page3.html'">
+Next Surprise 🎁
+</button>
+
+</div>
+
+<!-- Music -->
+<audio autoplay loop controls style="position:fixed;bottom:15px;left:15px;">
+<source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const message=`Dear GD ❤️,
+
+Happy Birthday to the most amazing person in my life.
+
+Thank you for always making me smile, supporting me, and caring for me in ways that words can never fully describe.
+
+You are not just my boyfriend...
+You are my safe place, my comfort, and someone I admire every single day.
+
+I pray that every dream you have comes true.
+May this year bring you happiness, success, good health, and endless beautiful moments.
+
+No matter where life takes us,
+I will always cherish every memory we create together.
+
+Happy Birthday once again, my love.
+
+Forever Yours ❤️`;
+
+let i=0;
+
+function startLetter(){
+
+document.querySelector(".envelope").style.display="none";
+
+const speed=40;
+
+function type(){
+
+if(i<message.length){
+
+document.getElementById("letter").innerHTML+=message.charAt(i);
+
+i++;
+
+setTimeout(type,speed);
+
+}
+
+}
+
+type();
+
+}
+
+function hearts(){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML=["💖","💕","🤍","✨"][Math.floor(Math.random()*4)];
+
+h.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),7000);
+
+}
+
+setInterval(hearts,400);
+
+function petals(){
+
+let p=document.createElement("div");
+
+p.className="petal";
+
+p.innerHTML="🌸";
+
+p.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(p);
+
+setTimeout(()=>p.remove(),10000);
+
+}
+
+setInterval(petals,500);
+
+</script>
+
+</body>
+</html>
